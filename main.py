@@ -54,7 +54,7 @@ interquartile_range_mask = (masked_pixels >= Q1) & (masked_pixels <= Q3)
 filtered_pixels = masked_pixels[np.all(interquartile_range_mask, axis=-1)]
 average_color_IQR = np.mean(filtered_pixels, axis=0)
 
-print("제1사분위수(Q1)부터 제3사분위수(Q3)까지 피부 영역 픽셀의 평균 RGB 값:", average_color_IQR)
+print("제1사분위수(Q1)부터 제3사분위수(Q3)까지 피부 영역 픽셀의 평균 BGR 값:", average_color_IQR)
 
 # 결과 시각화
 cv2.imshow('Final Skin Area with Morphology (YCbCr)', final_skin)
