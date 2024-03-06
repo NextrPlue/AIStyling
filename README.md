@@ -17,3 +17,6 @@
 - 백엔드: Spring
 - 프론트엔드: React
 - 알고리즘: 파이썬
+
+## 필요 모델
+https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
