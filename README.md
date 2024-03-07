@@ -22,5 +22,9 @@
 ## 필요 모델
 https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
 
+# 팀원
+- 김태훈 [github](https://github.com/minchoCoin)
+- 이성훈 [github](https://github.com/NextrPlue)
+
 ## Reference
 https://koreascience.kr/article/CFKO200928451820293.pdf
