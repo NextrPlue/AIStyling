@@ -46,11 +46,6 @@ for face in faces:
     cv2.fillPoly(cheek_mask, [np.array(cheek_points, dtype=np.int32)], (255))
     cv2.fillPoly(cheek_mask, [np.array(lip_points, dtype=np.int32)], (0))
 
-    # 입술 랜드마크 포인트 결과 이미지에 표시
-    for point in lip_points:
-        cv2.circle(image, point, 1, (0, 255, 0), -1)  # 초록색 원으로 표시
-
-
 # 이미지를 YCbCr 컬러 공간으로 변환 및 피부색 마스크 생성
 ycbcr = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
 lower_skin = np.array([0, 133, 77], dtype=np.uint8)
