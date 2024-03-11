@@ -39,7 +39,7 @@ for face in faces:
 
     # 볼 영역과 입술 영역에 대한 랜드마크 포인트
     cheek_points = [(landmarks.part(n).x, landmarks.part(n).y) for n in range(1, 16)]
-    lip_points = [(landmarks.part(n).x, landmarks.part(n).y) for n in range(48, 68)]
+    lip_points = [(landmarks.part(n).x, landmarks.part(n).y) for n in range(48, 60)]
     
     # 볼 영역에 대한 마스크 생성
     cheek_mask = np.zeros_like(gray)
