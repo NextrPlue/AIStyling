@@ -10,8 +10,26 @@ image_path = 'test.jpg'
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
 
-# 이미지 로드 및 흑백 변환
-image = cv2.imread(image_path)
+# 이미지 로드
+image_loaded = cv2.imread(image_path)
+
+# 이미지 크기 조정을 위한 함수
+def resize_image(image, size=(1080, 1080)):
+    h, w = image.shape[:2]
+    if h > w:
+        scale = size[1] / h
+        new_w = int(w * scale)
+        new_h = size[1]
+    else:
+        scale = size[0] / w
+        new_h = int(h * scale)
+        new_w = size[0]
+    return cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_AREA)
+
+# 이미지 크기 조정
+image = resize_image(image_loaded)
+
+# 이미지 흑백화
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # 얼굴 탐지 및 랜드마크 추출
@@ -36,7 +54,7 @@ skin_mask = cv2.inRange(ycbcr, lower_skin, upper_skin)
 
 # 모폴로지 연산 적용
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-skin_mask = cv2.erode(skin_mask, kernel, iterations=20)
+skin_mask = cv2.erode(skin_mask, kernel, iterations=2)
 
 # 겹치는 부분의 마스크 선택
 combined_mask = cv2.bitwise_and(cheek_mask, skin_mask)
