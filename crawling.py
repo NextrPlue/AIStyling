@@ -7,6 +7,7 @@ import os
 
 # 검색쿼리
 searchKey = input('검색할 키워드 입력 :')
+searchNum = input('저장할 사진의 개수 입력 :')
 
 # 폴더 생성
 def createFolder(dir):
@@ -45,7 +46,7 @@ while True:
         time.sleep(2)
     except:
         pass
-    if count == 10: # class 이름으로 가져오기
+    if count == 2: # class 이름으로 가져오기
         break
 
 # 이미지 수집 및 저장
@@ -58,18 +59,30 @@ if images == []:
     driver.close()
     quit()
 
-for i in range(0, len(images), 2):
+count = 1
+for i in range(len(images)):
+    if count > int(searchNum):
+        break
     try:
         images[i].click()
         time.sleep(1)
-        imgUrl = driver.find_element(By.XPATH,
-            '//*[@id="Sva75c"]/div[2]/div[2]/div[2]/div[2]/c-wiz/div/div/div/div/div[3]/div[1]/a/img[1]').get_attribute("src")
-        imgUrl = imgUrl.replace('https', 'http') # https로 요청할 경우 보안 문제로 SSL에러가 남
-        opener = urllib.request.build_opener()
-        opener.addheaders = [('User-Agent', 'Mozilla/5.0')] # https://docs.python.org/3/library/urllib.request.html 참고
-        urllib.request.install_opener(opener)
-        urllib.request.urlretrieve(imgUrl, f'train_dataset/{searchKey}/{searchKey}_{str(int(i/2 + 1))}.jpg') # url을 
-        print(f'--{int(i/2 + 1)}번째 이미지 저장 완료--')
+        if len(driver.window_handles) == 1:
+            imgUrl = driver.find_element(By.XPATH,
+                '//*[@id="Sva75c"]/div[2]/div[2]/div[2]/div[2]/c-wiz/div/div/div/div/div[3]/div[1]/a/img[1]').get_attribute("src")
+            imgUrl = imgUrl.replace('https', 'http') # https로 요청할 경우 보안 문제로 SSL에러가 남
+            opener = urllib.request.build_opener()
+            opener.addheaders = [('User-Agent', 'Mozilla/5.0')] # https://docs.python.org/3/library/urllib.request.html 참고
+            urllib.request.install_opener(opener)
+            urllib.request.urlretrieve(imgUrl, f'train_dataset/{searchKey}/{searchKey}_{str(int(i/2 + 1))}.jpg') # url을 
+            print(f'--{count}번째 이미지 저장 완료--')
+            count += 1
+        else:
+            driver.switch_to.window(driver.window_handles[-1])
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
     except Exception as e:
         print('Error : ', e)
         pass
+
+driver.close()
+quit()
