@@ -46,7 +46,7 @@ while True:
         time.sleep(2)
     except:
         pass
-    if count == 2: # class 이름으로 가져오기
+    if count == 10: # class 이름으로 가져오기
         break
 
 # 이미지 수집 및 저장
