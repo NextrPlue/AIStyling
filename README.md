@@ -20,7 +20,8 @@
 - 알고리즘: 파이썬
 
 ## 필요 모델
-https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
+- https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
+- https://www.kaggle.com/code/baranbingl/face-shape-detection-85-acc-on-test-set/output
 
 # 팀원
 - 김태훈 [github](https://github.com/minchoCoin)
