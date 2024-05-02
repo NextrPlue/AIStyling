@@ -22,6 +22,7 @@
 ## 필요 모델
 - https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
 - https://www.kaggle.com/code/baranbingl/face-shape-detection-85-acc-on-test-set/output
+- https://www.kaggle.com/code/bradwel/facial-classification-model/output?select=new_face_classifier.h5
 
 # 팀원
 - 김태훈 [github](https://github.com/minchoCoin)
